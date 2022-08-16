@@ -4,6 +4,8 @@ This repo contains some utility scripts
 
 ## Video scripts
 
+*These scripts use `ffmpeg` to process videos*
+
 - `last_frame_as_cover.sh`
 
   Some platforms (eg. Google Photos), use the first frame of a video as the cover image, but sometimes it makes more sense to use the last frame, this script fix this: grabs the last frame and put it at the beginning of the video

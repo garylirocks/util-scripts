@@ -20,8 +20,8 @@ COVER_VIDEO=${COVER_IMAGE%.*}.mp4
 COVER_TS=${COVER_IMAGE%.*}.ts
 
 # get the last frame as an image
-# seek 0.1s from the end of the file
-ffmpeg -sseof -0.1 -i "${INPUT}" -vsync 0 -q:v 31 -update true -y "${COVER_IMAGE}"
+# seek 1s from the end of the file
+ffmpeg -sseof -1 -i "${INPUT}" -vsync 0 -q:v 31 -update true -y "${COVER_IMAGE}"
 
 # create a short video from the cover image
 ffmpeg -loop 1 -framerate "${FPS}" -i "${COVER_IMAGE}" -c:v libx264 -t 0.01 -pix_fmt yuv420p -y "${COVER_VIDEO}"

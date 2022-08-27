@@ -17,9 +17,10 @@ This repo contains some utility scripts
 - `cut_by_breakpoints.sh`
 
   Cut a video to segments by breakpoints, set the breakpoints as the second parameter
-    - enclosed it in double quotes
+    - use format "hh:mm:ss.SS"
     - separate breakpoints by a space
+    - enclose them in double quotes
 
   ```sh
-  bash cut_by_breakpoints.sh video.mp4 "00:00:09 00:00:15"
+  bash cut_by_breakpoints.sh video.mp4 "00:00:08.75 00:00:15.00"
   ```

@@ -2,14 +2,19 @@
 
 set -eu
 
+# video file name is the first parameter
 VIDEO=$1
-MID_BREAKPOINTS=$2
+
+# shift off the first parameter and use others as breakpoints
+shift
+MID_BREAKPOINTS=$@
 
 OUTPUT_DIR=${VIDEO%.*}_outputs
 
-if [[ ! -d "${OUTPUT_DIR}" ]]; then
-  mkdir "${OUTPUT_DIR}"
+if [[ -d "${OUTPUT_DIR}" ]]; then
+  rm -rf "${OUTPUT_DIR}"
 fi
+mkdir "${OUTPUT_DIR}"
 
 START="00:00:00"
 END=$(ffmpeg -hide_banner -i "${VIDEO}" 2>&1 | sed -r -n "s/^.*Duration: ([0-9:.]*),.*$/\1/p")
@@ -21,5 +26,5 @@ for (( i=0; i<$(( ${#BREAKPOINTS[@]} - 1 )); i++ )); do
   from=${BREAKPOINTS[$i]}
   next=$(( i+1 ))
   to=${BREAKPOINTS[$next]}
-  ffmpeg -i "${VIDEO}" -ss "${from}" -to "${to}" -c:v copy -c:a copy -map_metadata 0 -y "${OUTPUT_DIR}/${VIDEO%.*}_${from//:/-}_${to//:/-}.mp4"
+  ffmpeg -loglevel quiet -i "${VIDEO}" -ss "${from}" -to "${to}" -c:v copy -c:a copy -map_metadata 0 -y "${OUTPUT_DIR}/${VIDEO%.*}_${from//:/-}_${to//:/-}.mp4"
 done

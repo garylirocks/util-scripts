@@ -1,0 +1,6 @@
+# each line could have zero, one, or multiple breakpoints
+# remove comment lines before run
+video1.mp4 00:00:01.15 00:00:03.33
+video2.mp4 00:00:02.22 00:00:30.00
+video3.mp4 00:00:08.20
+video4.mp4

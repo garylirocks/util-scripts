@@ -24,3 +24,11 @@ This repo contains some utility scripts
   ```sh
   bash cut_by_breakpoints.sh video.mp4 "00:00:08.75 00:00:15.00"
   ```
+
+- `batch.sh`
+
+  Batch processing files.
+
+  1. Copy `timestamps-example.txt` to your working directory, rename it to `timestamps.txt`
+  2. Add video file name and breakpoints in it, follow the example format, one video file per line
+  3. Run `bash /path/to/batch_cut_and_fix_cover.sh`
